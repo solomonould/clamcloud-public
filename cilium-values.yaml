@@ -2,7 +2,7 @@ kubeProxyReplacement: true
 ipam:
   mode: "cluster-pool"
 cluster:
-  poolIPv4PodCIDR: "10.0.0.0/8"
+  poolIPv4PodCIDR: "10.244.0.0/16"
   poolIPv4MaskSize: 24
 securityContext:
   capabilities:

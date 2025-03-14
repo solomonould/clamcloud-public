@@ -1,0 +1,41 @@
+kubeProxyReplacement: true
+ipam:
+  mode: "cluster-pool"
+cluster:
+  poolIPv4PodCIDR: "10.0.0.0/8"
+  poolIPv4MaskSize: 24
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETUID
+      - SETGID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+  cleanCiliumState:
+    privileged: true
+cgroup:
+  hostRoot: /sys/fs/cgroup
+  autoMount:
+    enabled: false
+ingressController:
+  enabled: true
+k8sServiceHost: "localhost"
+k8sServicePort: 7445
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+    service:
+      type: LoadBalancer
